@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriBurn | Laboni Akter - Professional Nutritionist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --secondary: #FF9800;
+            --dark: #333;
+            --light: #f9f9f9;
+            --gray: #777;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #F57C00;
+        }
+        
+        /* About Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Appointment Section */
+        .appointment {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 80px 0;
+        }
+        
+        .appointment .section-title h2 {
+            color: var(--white);
+        }
+        
+        .appointment .section-title p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .appointment-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .appointment-info {
+            flex: 1;
+        }
+        
+        .appointment-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .appointment-info p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .appointment-info ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .appointment-info ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .appointment-info ul li i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .appointment-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .payment-method:hover {
+            background-color: #e9e9e9;
+        }
+        
+        .payment-method.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .payment-method i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f9f9f9;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-card p, .contact-card a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+            font-size: 14px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            font-size: 22px;
+            color: var(--primary);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+        
+        /* Steps */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .step.completed .step-number {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        .step-label {
+            font-size: 12px;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .step.completed .step-label {
+            color: var(--secondary);
+        }
+        
+        /* Transaction History */
+        .transaction-history {
+            margin-top: 30px;
+        }
+        
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .transaction-table th, .transaction-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .transaction-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        
+        .transaction-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .status-pending {
+            color: #FF9800;
+            font-weight: 500;
+        }
+        
+        .status-completed {
+            color: #4CAF50;
+            font-weight: 500;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .appointment-container {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text, .appointment-info, .appointment-form {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>NutriBurn</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#appointment">Appointment</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Transform Your Health with Science-Based Nutrition</h1>
+            <p>Personalized nutrition plans to help you achieve optimal health and wellness, tailored to your unique needs and goals.</p>
+            <a href="#appointment" class="btn">Book an Appointment</a>
+            <a href="#services" class="btn btn-secondary">Our Services</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>With a passion for helping people achieve their health goals through proper nutrition, I bring scientific expertise and personalized care to each client.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Laboni Akter - Nutritionist">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Laboni Akter</h3>
+                    <p>I am a graduate from the Institute of Nutrition and Food Science, University of Dhaka, with both undergraduate and ongoing postgraduate studies in nutrition science. Currently, I am working as a nutritionist at American Wellness Centre (AWC).</p>
+                    <p>My goal is to enhance your life through science-based nutritional advice and bring new vitality to your health. I address every aspect of health issues—from gastric problems to complex chronic diseases.</p>
+                    <p>I believe that proper nutrition is not just about treating diseases but is a powerful tool for improving quality of life. My main objective is to provide personalized, scientific, and effective nutritional solutions for each patient.</p>
+                    <a href="#appointment" class="btn">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Specializations</h2>
+                <p>Comprehensive nutritional solutions for a wide range of health conditions and wellness goals.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stomach"></i>
+                    </div>
+                    <h3>Gastric & IBS</h3>
+                    <p>Proper nutrition planning to reduce stomach complications and manage Irritable Bowel Syndrome effectively.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-kidneys"></i>
+                    </div>
+                    <h3>CKD (Kidney Disease)</h3>
+                    <p>Special dietary habits and nutritional guidance for kidney care and management of chronic kidney disease.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3>Obesity & Diabetes</h3>
+                    <p>Weight control and blood sugar management through proper dietary planning and lifestyle changes.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3>Allergies & Skin Conditions</h3>
+                    <p>Diet plans and lifestyle advice to restore skin health for conditions like allergies, vitiligo, and psoriasis.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Weakness & Autism</h3>
+                    <p>The role of nutrition in improving physical and mental health, including support for autism spectrum disorders.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Heart Disease & Hypertension</h3>
+                    <p>Long-term pain and blood pressure control through dietary and lifestyle coordination.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Insomnia & Thyroid</h3>
+                    <p>The powerful role of nutrition in various body complexities including sleep disorders and thyroid conditions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>PCOS & Women's Health</h3>
+                    <p>Specialized nutritional plans for women's health issues including PCOS, anemia, and mental health improvement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Appointment Section -->
+    <section class="section appointment" id="appointment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+                <p>Online consultations available Saturday to Wednesday, 6 PM to 10 PM throughout the year.</p>
+            </div>
+            
+            <div class="appointment-container">
+                <div class="appointment-info">
+                    <h3>Schedule Your Consultation</h3>
+                    <p>Get personalized nutrition advice from the comfort of your home through our online consultation system.</p>
+                    
+                    <ul>
+                        <li><i class="far fa-calendar-alt"></i> <strong>Availability:</strong> Saturday to Wednesday</li>
+                        <li><i class="far fa-clock"></i> <strong>Time:</strong> 6:00 PM - 10:00 PM</li>
+                        <li><i class="fas fa-video"></i> <strong>Platform:</strong> Online Video Consultation</li>
+                        <li><i class="fas fa-money-bill-wave"></i> <strong>Payment:</strong> Bkash / Nagad</li>
+                    </ul>
+                    
+                    <p>After booking, you'll receive a confirmation email with payment details and meeting link.</p>
+                </div>
+                
+                <div class="appointment-form">
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" class="form-control" required>
+                                <option value="">Select a time</option>
+                                <option value="6:00 PM">6:00 PM</option>
+                                <option value="6:30 PM">6:30 PM</option>
+                                <option value="7:00 PM">7:00 PM</option>
+                                <option value="7:30 PM">7:30 PM</option>
+                                <option value="8:00 PM">8:00 PM</option>
+                                <option value="8:30 PM">8:30 PM</option>
+                                <option value="9:00 PM">9:00 PM</option>
+                                <option value="9:30 PM">9:30 PM</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="concern">Health Concern</label>
+                            <select id="concern" class="form-control" required>
+                                <option value="">Select your main concern</option>
+                                <option value="Gastric/IBS">Gastric/IBS</option>
+                                <option value="CKD">Chronic Kidney Disease</option>
+                                <option value="Obesity/Diabetes">Obesity/Diabetes</option>
+                                <option value="Skin Conditions">Skin Conditions</option>
+                                <option value="Weakness/Hair Loss">Weakness/Hair Loss</option>
+                                <option value="Heart/Blood Pressure">Heart/Blood Pressure</option>
+                                <option value="Thyroid/Insomnia">Thyroid/Insomnia</option>
+                                <option value="PCOS/Women's Health">PCOS/Women's Health</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">Continue to Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients say about their experience with our nutritional guidance.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"Laboni's guidance helped me manage my diabetes effectively. Her personalized meal plans made it easy to control my blood sugar levels without feeling deprived."</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Fatema Begum</h4>
+                            <p>Diabetes Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Get in touch for more information about my services or to schedule an appointment.</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+880 1869-260464</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:laboniakter.infs@gmail.com">laboniakter.infs@gmail.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>American Wellness Centre (AWC), Dhaka</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>NutriBurn</h3>
+                    <p>Where your healthy lifestyle begins. Science-based nutrition advice for optimal health and wellness.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#appointment">Appointment</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Gastric & IBS</a></li>
+                        <li><a href="#">Kidney Disease</a></li>
+                        <li><a href="#">Diabetes Management</a></li>
+                        <li><a href="#">Weight Control</a></li>
+                        <li><a href="#">Women's Health</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Payment Methods</h3>
+                    <p>We accept payments through:</p>
+                    <div class="payment-methods">
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Bkash: 01869260464</span>
+                        </div>
+                        <div class="payment-method">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Nagad: 01869260464</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 NutriBurn | Laboni Akter. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Appointment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Complete Your Appointment</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="steps">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Appointment Details</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+                
+                <h4 style="margin-bottom: 20px;">Payment Information</h4>
+                <p style="margin-bottom: 20px;">Consultation Fee: ৳1000</p>
+                
+                <div class="form-group">
+                    <label>Select Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-method active" data-method="bkash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Bkash</span>
+                        </div>
+                        <div class="payment-method" data-method="nagad">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Nagad</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="paymentNumber">Your Bkash Number</label>
+                    <input type="tel" id="paymentNumber" class="form-control" placeholder="01XXXXXXXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="transactionId">Transaction ID</label>
+                    <input type="text" id="transactionId" class="form-control" placeholder="Enter transaction ID">
+                </div>
+                
+                <div class="payment-instructions">
+                    <h5>Payment Instructions:</h5>
+                    <ol>
+                        <li>Go to your bKash Mobile Menu by dialing *247#</li>
+                        <li>Choose "Payment" option</li>
+                        <li>Enter Merchant bKash Account Number: <strong>01869260464</strong></li>
+                        <li>Enter amount: <strong>1000</strong></li>
+                        <li>Enter reference: <strong>Your Name</strong></li>
+                        <li>Enter the counter number: <strong>1</strong></li>
+                        <li>Now enter your bKash Mobile Menu PIN to confirm</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn">Back</button>
+                <button class="btn btn-secondary">Complete Payment</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Appointment Confirmed</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="steps">
+                    <div class="step completed">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Appointment Details</div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Payment</div>
+                    </div>
+                    <div class="step active">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                    <i class="fas fa-check-circle" style="font-size: 60px; color: #4CAF50; margin-bottom: 20px;"></i>
+                    <h4 style="margin-bottom: 15px;">Thank You!</h4>
+                    <p>Your appointment has been successfully scheduled.</p>
+                </div>
+                
+                <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
+                    <h5 style="margin-bottom: 15px;">Appointment Details</h5>
+                    <p><strong>Date:</strong> <span id="confirmDate">Saturday, October 15, 2023</span></p>
+                    <p><strong>Time:</strong> <span id="confirmTime">7:00 PM</span></p>
+                    <p><strong>Consultation Type:</strong> <span id="confirmType">Online Video Consultation</span></p>
+                    <p><strong>Payment Method:</strong> <span id="confirmPayment">Bkash (Transaction ID: 8A7D6F5G4H3)</span></p>
+                </div>
+                
+                <p>You will receive a confirmation email with the meeting link shortly. Please check your spam folder if you don't see it in your inbox.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" style="width: 100%;">View Transaction History</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Transaction History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Transaction History</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="transaction-history">
+                    <table class="transaction-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Service</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 15, 2023</td>
+                                <td>Nutrition Consultation</td>
+                                <td>৳1000</td>
+                                <td>Bkash</td>
+                                <td class="status-completed">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>Sep 28, 2023</td>
+                                <td>Follow-up Consultation</td>
+                                <td>৳800</td>
+                                <td>Nagad</td>
+                                <td class="status-completed">Completed</td>
+                            </tr>
+                            <tr>
+                                <td>Sep 10, 2023</td>
+                                <td>Initial Consultation</td>
+                                <td>৳1200</td>
+                                <td>Bkash</td>
+                                <td class="status-completed">Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" style="width: 100%;">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainMenu').classList.toggle('show');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mainMenu').classList.remove('show');
+            });
+        });
+        
+        // Appointment Form Submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would validate the form and send data to server
+            // For this demo, we'll just show the payment modal
+            document.getElementById('paymentModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Payment Method Selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                // Remove active class from all
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('active');
+                });
+                
+                // Add active class to clicked
+                this.classList.add('active');
+                
+                // Update payment instructions based on selection
+                const methodType = this.getAttribute('data-method');
+                const instructions = document.querySelector('.payment-instructions ol');
+                
+                if (methodType === 'bkash') {
+                    instructions.innerHTML = `
+                        <li>Go to your bKash Mobile Menu by dialing *247#</li>
+                        <li>Choose "Payment" option</li>
+                        <li>Enter Merchant bKash Account Number: <strong>01869260464</strong></li>
+                        <li>Enter amount: <strong>1000</strong></li>
+                        <li>Enter reference: <strong>Your Name</strong></li>
+                        <li>Enter the counter number: <strong>1</strong></li>
+                        <li>Now enter your bKash Mobile Menu PIN to confirm</li>
+                    `;
+                    
+                    document.querySelector('label[for="paymentNumber"]').textContent = 'Your Bkash Number';
+                } else if (methodType === 'nagad') {
+                    instructions.innerHTML = `
+                        <li>Go to your Nagad Mobile Menu by dialing *167#</li>
+                        <li>Choose "Payment" option</li>
+                        <li>Enter Merchant Nagad Account Number: <strong>01869260464</strong></li>
+                        <li>Enter amount: <strong>1000</strong></li>
+                        <li>Enter reference: <strong>Your Name</strong></li>
+                        <li>Now enter your Nagad Mobile Menu PIN to confirm</li>
+                    `;
+                    
+                    document.querySelector('label[for="paymentNumber"]').textContent = 'Your Nagad Number';
+                }
+            });
+        });
+        
+        // Complete Payment Button
+        document.querySelector('#paymentModal .btn-secondary').addEventListener('click', function() {
+            // Validate payment details
+            const paymentNumber = document.getElementById('paymentNumber').value;
+            const transactionId = document.getElementById('transactionId').value;
+            
+            if (!paymentNumber || !transactionId) {
+                alert('Please provide your payment number and transaction ID');
+                return;
+            }
+            
+            // Close payment modal and show confirmation
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('confirmationModal').style.display = 'block';
+            
+            // In a real app, you would send this data to your server
+        });
+        
+        // View Transaction History Button
+        document.querySelector('#confirmationModal .btn-secondary').addEventListener('click', function() {
+            document.getElementById('confirmationModal').style.display = 'none';
+            document.getElementById('historyModal').style.display = 'block';
+        });
+        
+        // Close Modal Buttons
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Date restrictions for appointment (Saturday to Wednesday)
+        const dateInput = document.getElementById('date');
+        dateInput.addEventListener('input', function() {
+            const selectedDate = new Date(this.value);
+            const day = selectedDate.getDay(); // 0=Sunday, 1=Monday, etc.
+            
+            // Check if day is Thursday (4) or Friday (5)
+            if (day === 4 || day === 5) {
+                alert('Appointments are only available from Saturday to Wednesday');
+                this.value = '';
+            }
+        });
+        
+        // Time restrictions (6PM to 10PM)
+        const timeSelect = document.getElementById('time');
+        // This is already enforced by the select options
+        
+        // In a real application, you would also:
+        // 1. Validate the selected date is not in the past
+        // 2. Check for available time slots (not already booked)
+        // 3. Send the appointment data to your backend server
+        // 4. Process the payment verification
+        // 5. Send confirmation emails
+    </script>
+</body>
+</html>
